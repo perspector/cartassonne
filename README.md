@@ -1,7 +1,7 @@
 # cartassonne
 ![Screenshot](screenshot.png)
 A Carcassonne game tiler that will make random Carcassonne games for hanging on your walls.
-## Installing
+## Installation and Use
 Clone the files:\
 `git clone https://github.com/perspector/cartassonne.git`
 
