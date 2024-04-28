@@ -1,5 +1,6 @@
 # cartassonne
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.png)\
+ \
 A Carcassonne game tiler that will make random Carcassonne games for hanging on your walls.
 ## Installation and Use
 Clone the files:\
