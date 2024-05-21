@@ -3,7 +3,7 @@
  \
 A Carcassonne game tiler that will make random Carcassonne games for hanging on your walls.
 ## Installation and Use
-Clone the files:\
+Clone the repository:\
 `git clone https://github.com/perspector/cartassonne.git`
 
 Install Python:
@@ -19,8 +19,11 @@ source cartassonne/bin/activate
 Go to the directory you cloned this repository to:\
 `cd cartassonne`
 
+Install the required dependencies:\
+`pip install -r requirements.txt`
+
 Run the Python file:\
-`python3 main.py`
+`python3 cartassonne.py`
 
 ## Credits
 * Thank you tsaglam for the wonderful Carcassonne tiles\
