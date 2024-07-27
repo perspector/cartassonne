@@ -16,15 +16,11 @@ import decimal
 # uses glob (standard library) to find tile files
 import glob
 
-# uses random to randomly choose tiles that match criteria
-#import random
+# uses secrets to randomly choose tiles that match criteria
 import secrets as random
 
 # os is used only to get the current working directory
 import os
-
-
-# TODO: find out how to synthesize images/pdfs for printing
 
 
 # find all the tile files (tile files is fun to say!)
@@ -169,20 +165,12 @@ def m_to_px(m):
     return math.floor(m * tile_width / 0.045)
 
 # Split the fully tiled image into multiple pages for printing
-# A4 = x m x x m
 width_margin = 0.01 # width margin on left and right in meters
 height_margin = 0.01 # height margin on top and bottom in meters
 A4_width = m_to_px(0.210 - 2 * width_margin) # printable A4 width in meters
 A4_height = m_to_px(0.297 - 2 * height_margin) # printable A4 height in meters
 
-
 pages = []
-
-#def drange(start, end, interval):
-#    start, end = decimal.Decimal(str(start)), decimal.Decimal(str(end))
-#    while start < end:
-#        yield start
-#        start += decimal.Decimal(interval)
 
 print(f'{math.floor(A4_width / tile_width)} by {math.floor(A4_height / tile_width)} tiles can fit on one piece of A4 paper.')
 print('[INFO] Separating pages...')
@@ -194,16 +182,11 @@ for y in range(0, tiled_image.height, math.floor(A4_height / tile_width)*tile_wi
         page_img.paste(temp, (m_to_px(width_margin), m_to_px(height_margin)))
         pages.append(page_img)
 
-print(f'\n\n[INFO] That will be {len(pages)} pages of A4 paper!\n\n')
+print(f'\n\n[INFO] You will need {len(pages)} pages of A4 paper!\n\n')
 
 t1_save = time.time()
-#tiled_image.save('tiled-result.png')
 pages[0].save('tiled-result.pdf', save_all=True, append_images=pages[1:])
-
-
 print(f'[INFO] File Saving Time: {(time.time() - t1_save) * 1000} ms')
-
 print(f'[INFO] Total Time: {(time.time() - t1_algorithm) * 1000} ms')
-
 print(f"\n[RESULT] Output saved to:\n{os.getcwd() + '/tiled-result.pdf'}")
 print(f"\n[RESULT] Complete output saved to:\n{os.getcwd() + '/tiled-result-complete.pdf'}")
